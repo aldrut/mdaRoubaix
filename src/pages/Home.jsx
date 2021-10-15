@@ -8,20 +8,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React, { useState } from "react";
 import Carousel from "react-elastic-carousel";
-import myItem from "../assets/css/item";
+import CustomCarousel from "../components/CustomCarousel";
+import MyItem from "../assets/css/item";
 import { CustomBtnRightArrow } from "../components/CustomBtnRightArrow";
 import { CustomBtnLeftArrow } from "../components/CustomBtnLeftArrow";
 
 export function Home() {
-    const [Message, setMessage] = useState("");
-    const [btnContent, setBtnContent] = useState("");
-    const[thisEvt,setEvt] = useState("");
+    const [Message, setMessage] = useState("L'application sera en français");
+    const [btnContent, setBtnContent] = useState("Allez");
+    const[thisEvt,setEvt] = useState("francais");
 
     const handleClick = (evt) => {
         switch (evt.currentTarget.name) {
             case "dFrance":
                 setMessage("L'application sera en français");
-
                 setBtnContent("Allez");
                 setEvt('francais');
                 break;
@@ -49,25 +49,30 @@ export function Home() {
                 setBtnContent("إبدأ");
                 setEvt('arabe');
                 break;
+
+            default :
+            break;
         }
     };
 
     const handleGo = (evt) => {
-
         console.log(thisEvt);
     };
 
     return (
+
+        
         <>
             <div className="container-fluid">
                 <div className="row ">
                     <div className="col mt-4">
-                        <img src={logo} class="align-items-center" width="150px" />
+                        <img src={logo} className="align-items-center" width="150px" alt="altImage"/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col mt-5">
-                        <Carousel 
+
+                        {/*<Carousel 
                         // onPrevStart=    {
                         //     (currentPageIndex) => alert
                         //     (JSON.parse(currentPageIndex)) 
@@ -81,20 +86,23 @@ export function Home() {
                             
                         >
                             
-                        {/* <myItem id="Fr">FRANCE</myItem>
-                        <myItem id="En">ANGLETERRE</myItem> */}
+                        <myItem id="Fr">FRANCE</myItem>
+                        <myItem id="En">ANGLETERRE</myItem> 
 
-                        <myItem id="Fr"><img name="dFrance" src={dFrance} class="rounded-left"  alt="France"onClick={handleClick} /></myItem>
+                        <MyItem id="Fr"><img name="dFrance" src={dFrance} className="rounded-left"  alt="France" onClick={handleClick} /></MyItem>
 
-                          <myItem id="En"><img name="dAnglais" src={dAngleterre} class="rounded" alt="United Kingdom" onClick={handleClick} /></myItem>
+                          <MyItem id="En"><img name="dAnglais" src={dAngleterre} className="rounded" alt="United Kingdom" onClick={handleClick} /></MyItem>
 
-                            <myItem  someProp="cool3"><img name="dPortugal" src={dPortugal} class="rounded" alt=""onClick={handleClick} /></myItem>
+                            <MyItem  id="Pt"><img name="dPortugal" src={dPortugal} className="rounded" alt="" onClick={handleClick} /></MyItem>
 
-                            <myItem someProp="cool4" ><img name="dRoumanie" src={dRoumanie} class="rounded"  alt="..."onClick={handleClick} /></myItem>
+                            <MyItem id="Ro" ><img name="dRoumanie" src={dRoumanie} className="rounded"  alt="..." onClick={handleClick} /></MyItem>
 
-                            <myItem  someProp="cool5"><img name="dArabe" src={dArabe} class="rounded"  alt="..."onClick={handleClick} /></myItem> 
+                            <MyItem  id="Ar"><img name="dArabe" src={dArabe} className="rounded"  alt="..." onClick={handleClick} /></MyItem> 
                         
-                        </Carousel>
+                        </Carousel>*/}
+
+                        
+
                     </div>
                 </div>
                 {Message && ( <div className="row"><div className="col"> {Message}</div></div>)}
@@ -112,6 +120,8 @@ export function Home() {
                    
                 </div>
             </div>
+            
+            <CustomCarousel> </CustomCarousel>
         </>
     );
 }
