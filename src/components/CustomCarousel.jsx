@@ -7,25 +7,30 @@ import dArabe from "../assets/drapeaux/dAra.png";
 import '../assets/css/carousel.css'
 
 //CAROUSEL
-import React, {useState} from 'react';
+import React from 'react';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {FaHandPointLeft} from "react-icons/fa"
 import {FaHandPointRight} from "react-icons/fa"
 
+import{FrenchAccueil} from "../pages/frenchAccueil.jsx"
+
 export function CustomCarousel() {
+
+    const handleClick = (currentPageIndex) =>
+    {
+        alert(JSON.stringify(currentPageIndex.slider.index));
+
+    }
     return (
 
         <CarouselProvider naturalSlideWidth={100} naturalSlideHeight={70} totalSlides={5} >
 
-            <Slider>
-                
-            
-            
+            <Slider>           
                 <Slide index={0}>
                     <div className="row mt-5">
                         <div className="col">
-                            <img src={dFrance} alt="" onClick="window.open('www.google.fr')" />
+                            <a href={FrenchAccueil}><img src={dFrance} alt="" /></a>
                         </div>
                     </div>
                     <div className="row">
@@ -79,8 +84,8 @@ export function CustomCarousel() {
                     </Slide>
                 
             </Slider>
-            <ButtonBack className='btn btn-warning mx-2 '><FaHandPointLeft ></FaHandPointLeft></ButtonBack>
-            <ButtonNext className='btn btn-warning'><FaHandPointRight></FaHandPointRight></ButtonNext>
+            <ButtonBack onClick={handleClick} className='btn btn-warning mx-2 '><FaHandPointLeft ></FaHandPointLeft></ButtonBack>
+            <ButtonNext onClick={handleClick} className='btn btn-warning'><FaHandPointRight></FaHandPointRight></ButtonNext>
             
         </CarouselProvider>
 
