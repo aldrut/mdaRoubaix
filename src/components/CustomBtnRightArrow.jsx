@@ -1,8 +1,8 @@
 import { FaChevronRight } from "react-icons/fa";
 
 
-export function CustomBtnRightArrow(props){
-const { text, classes } = props;
+export function CustomBtnRightArrow(){
+
 
     return(
 

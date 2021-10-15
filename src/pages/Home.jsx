@@ -8,9 +8,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React, { useState } from "react";
 import Carousel from "react-elastic-carousel";
-import myItem from "../assets/css/item";
+import MyItem from "../assets/css/item";
 import { CustomBtnRightArrow } from "../components/CustomBtnRightArrow";
 import { CustomBtnLeftArrow } from "../components/CustomBtnLeftArrow";
+import { CustomCarousel } from "../components/CustomCarousel";
 
 export function Home() {
     const [Message, setMessage] = useState("");
@@ -49,6 +50,9 @@ export function Home() {
                 setBtnContent("إبدأ");
                 setEvt('arabe');
                 break;
+
+                default:
+                    break;
         }
     };
 
@@ -62,39 +66,37 @@ export function Home() {
             <div className="container-fluid">
                 <div className="row ">
                     <div className="col mt-4">
-                        <img src={logo} class="align-items-center" width="150px" />
+                        <img src={logo} className="align-items-center" width="150px" alt="logo" />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col mt-5">
-                        <Carousel 
-                        // onPrevStart=    {
-                        //     (currentPageIndex) => alert
-                        //     (JSON.parse(currentPageIndex)) 
-                        // }
+                        {/* <Carousel 
+                        onPrevStart=    {
+                            (currentPageIndex) => alert
+                            (JSON.stringify(currentPageIndex.item.id)) 
+                        }
                         
-                        // onNextStart=
-                        //     {
-                        //         (currentPageIndex) => alert
-                        //         ( JSON.parse(currentPageIndex)) 
-                        //     }
+                        onNextStart=
+                            {
+                                (currentPageIndex) => alert
+                                ( JSON.stringify(currentPageIndex.item.id)) 
+                            }
                             
                         >
-                            
-                        {/* <myItem id="Fr">FRANCE</myItem>
-                        <myItem id="En">ANGLETERRE</myItem> */}
+                       
 
-                        <myItem id="Fr"><img name="dFrance" src={dFrance} class="rounded-left"  alt="France"onClick={handleClick} /></myItem>
+                       <MyItem id="Fr"><img name="dFrance" src={dFrance} className="rounded-circle"  alt="France"onClick={handleClick} /></MyItem>
 
-                          <myItem id="En"><img name="dAnglais" src={dAngleterre} class="rounded" alt="United Kingdom" onClick={handleClick} /></myItem>
+                          <MyItem id="En"><img name="dAnglais" src={dAngleterre} className="rounded" alt="United Kingdom" onClick={handleClick} /></MyItem>
 
-                            <myItem  someProp="cool3"><img name="dPortugal" src={dPortugal} class="rounded" alt=""onClick={handleClick} /></myItem>
+                            <MyItem id="Pt"><img name="dPortugal" src={dPortugal} className="rounded" alt=""onClick={handleClick} /></MyItem>
 
-                            <myItem someProp="cool4" ><img name="dRoumanie" src={dRoumanie} class="rounded"  alt="..."onClick={handleClick} /></myItem>
+                            <MyItem id="Ro" ><img name="dRoumanie" src={dRoumanie} className="rounded"  alt="..."onClick={handleClick} /></MyItem>
 
-                            <myItem  someProp="cool5"><img name="dArabe" src={dArabe} class="rounded"  alt="..."onClick={handleClick} /></myItem> 
+                            <MyItem  id="Ar"><img name="dArabe" src={dArabe} className="rounded"  alt="..."onClick={handleClick} /></MyItem> 
                         
-                        </Carousel>
+                        </Carousel> */}
                     </div>
                 </div>
                 {Message && ( <div className="row"><div className="col"> {Message}</div></div>)}
@@ -109,7 +111,7 @@ export function Home() {
                     <CustomBtnRightArrow />
                     <CustomBtnRightArrow />
                     
-                   
+                   <CustomCarousel></CustomCarousel>
                 </div>
             </div>
         </>
