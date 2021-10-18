@@ -1,0 +1,16 @@
+@media (min-width: 992px) {
+    .btnMains{
+        margin-top: -200px !important;
+    }
+}
+
+
+.mt-carousel{
+    margin-top: 150px !important;
+}
+
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: black;
+    /* border: 1px solid black; */
+  }

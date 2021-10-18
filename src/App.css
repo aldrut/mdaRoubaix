@@ -1,11 +1,11 @@
 .App {
-  text-align: center;
-  background-repeat : no-repeat;
-  background-size: cover ;
-  
-  background: linear-gradient(245deg, #e66465, #9198e5,rgb(53, 94, 61)); 
-  height: 100vh;
-}
+    text-align: center;
+    background-size: cover !important;
+    background: linear-gradient(127deg, #2888c9, rgb(233, 125, 184)); 
+    height: 100vh;
+    background-image: url('./assets/img/bg3.jpg');
+  }
+
 
 .App-logo {
   height: 40vmin;
