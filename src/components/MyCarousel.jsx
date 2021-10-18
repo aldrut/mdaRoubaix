@@ -107,7 +107,6 @@ export const MyCarousel = (props) => {
                         </span>
                     </button>
 
-
                    
                 </div>
 
