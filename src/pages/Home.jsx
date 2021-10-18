@@ -1,5 +1,4 @@
 
-import logo from "../assets/drapeaux/logomda.png";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React from "react";
@@ -11,7 +10,7 @@ export function Home() {
 
     return ( 
         <>
-        <div className="display-5 font-weight">
+        <div className="display-5 fw-bold ">
             "La Maison Des Associations"
         </div>
             <CustomCarousel/>

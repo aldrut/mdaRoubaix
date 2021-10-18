@@ -3,7 +3,8 @@
   background-repeat : no-repeat;
   background-size: cover ;
   
-  background: linear-gradient(245deg, #e66465, #9198e5,rgb(53, 94, 61)); 
+  background-image: url("./assets/img/bg.png");
+     
   height: 100vh;
 }
 
@@ -40,4 +41,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.menuButton
+{
+  width : 50px;
+  height: 60px;
+  border-radius: 50px;
+  background: linear-gradient(rgb(147, 147, 255),white);
 }
