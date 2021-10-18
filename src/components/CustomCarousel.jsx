@@ -11,6 +11,7 @@ import '../assets/css/carousel.css'
 //CAROUSEL
 import React, {useState} from 'react';
 // import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+
 import 'pure-react-carousel/dist/react-carousel.es.css';
 // import {FaHandPointLeft} from "react-icons/fa"
 // import {FaHandPointRight} from "react-icons/fa"
@@ -23,8 +24,11 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 
 
 
+import{FrenchAccueil} from "../pages/Accueil.jsx"
+import { render } from "@testing-library/react";
+
 export function CustomCarousel() {
-  
+
     // const handleClick = (evt) =>
     // {
     //     let btnEvt = evt.currentTarget.name;
@@ -242,7 +246,6 @@ export function CustomCarousel() {
         //     <ButtonNext className='btn btn-warning mx-5 btnMains'><FaHandPointRight></FaHandPointRight></ButtonNext>
             
         // </CarouselProvider>
-
 
 
 

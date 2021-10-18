@@ -1,11 +1,11 @@
 .App {
+
     text-align: center;
     background-size: cover !important;
     background: linear-gradient(127deg, #2888c9, rgb(233, 125, 184)); 
     height: 100vh;
     background-image: url('./assets/img/bg3.jpg');
   }
-
 
 .App-logo {
   height: 40vmin;
@@ -40,4 +40,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.menuButton
+{
+  width : 50px;
+  height: 60px;
+  border-radius: 50px;
+  background: linear-gradient(rgb(147, 147, 255),white);
 }
