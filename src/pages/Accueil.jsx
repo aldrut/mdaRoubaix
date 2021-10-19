@@ -9,6 +9,8 @@ import { FaBalanceScale } from 'react-icons/fa'
 import { FaCity } from 'react-icons/fa'
 import React, { useState } from 'react';
 
+import '../assets/css/accueil.css';
+
 
 export function Accueil() {
 
@@ -19,8 +21,8 @@ export function Accueil() {
 
     return (
         <>
-            <div className="display-5 fw-bold ">
-                "La Maison Des Associations"
+            {/* <div className="display-5 fw-bold ">
+                Maison Des Associations de Roubaix
             </div>
 
             <div className="container">
@@ -59,6 +61,49 @@ export function Accueil() {
                     <div className="col menuButton">S'insérer</div>
                 </div>
 
+
+            </div> */}
+
+
+
+
+
+
+
+            <div className="container pt-5">
+
+                <div className="display-5 fw-bold mt-5">
+                    Maison Des Associations de Roubaix
+                </div>
+
+                <div className="row pt-5">
+
+                    <div className="col-5 menuButton mx-auto mt-4 text-light">
+                        <GiHamburger size={50} ></GiHamburger>
+                        <br />
+                        Se nourrir
+                    </div>
+
+                    <div className="col-5 menuButton mx-auto mt-4 text-light"><AiOutlineHome className="icones" ></AiOutlineHome><br/>Se loger</div>
+
+                    <div className="col-5 menuButton mx-auto mt-4 text-light"><GiWhiteBook size={50} ></GiWhiteBook><br/>  Apprendre</div>
+
+                    <div className="col-5 menuButton mx-auto mt-4 text-light"> <BiWalk size={50} ></BiWalk><br/>  Se Déplacer</div>
+
+                    <div className="col-5 menuButton mx-auto mt-4 text-light"> <GiHealthNormal size={50} ></GiHealthNormal>
+                        <br />
+                        Se Soigner
+                    </div>
+
+                    <div className="col-5 menuButton mx-auto mt-4 text-light"> <FaBalanceScale size={50} /> <br/>Aide Juridique</div>
+
+                    <div className="col-5 menuButton mx-auto mt-4 text-light"><FaCity size={50} ></FaCity> <br/> Aide Administrative</div>
+
+                    <div className="col-5 menuButton mx-auto mt-4 text-light" onClick={ToDress} id="toDress"><GiClothes size={50} ></GiClothes><br/>   S' Habiller</div>
+                    
+                    <div className="col-5 menuButton mx-auto mt-4 text-light">S'insérer</div>
+
+                </div>
 
             </div>
 
