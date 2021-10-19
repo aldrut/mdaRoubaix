@@ -4,6 +4,7 @@ import dRoumanie from "../assets/drapeaux/dRoum.png";
 import dPortugal from "../assets/drapeaux/dPort.png";
 import dArabe from "../assets/drapeaux/dAra.png";
 import { MyCarouselItem } from "./MyCarouselItem";
+import { MiniFlag } from "./MiniFlag";
 import React, {useState} from 'react';
 import {FaArrowAltCircleRight} from 'react-icons/fa';
 import {FaArrowAltCircleLeft} from 'react-icons/fa';
@@ -12,6 +13,7 @@ import '../assets/css/carousel.css';
 
 export const MyCarousel = (props) => {
 
+    const {handleValidClick} = props;
     let [slideIndex, setSlideIndex] = useState(0);
 
     
@@ -23,6 +25,8 @@ export const MyCarousel = (props) => {
         desc:'Cette application sera traduite en Français.',
         text:'Français',
         titre:"Langue",
+        link:"http://www.google.fr",
+        btnValid: 'Valider',
     },
 
     {
@@ -31,6 +35,8 @@ export const MyCarousel = (props) => {
         desc:'This application will be translate in English',
         text:'English',
         titre:"Language",
+        link:"http://www.google.fr",
+        btnValid: 'Validate',
     }, 
 
     {
@@ -39,6 +45,8 @@ export const MyCarousel = (props) => {
         desc:'Această aplicație va fi tradusă în limba Română',
         text:'Română',
         titre:"Limba",
+        link:"http://www.google.fr",
+        btnValid: 'Valida',
     }, 
 
     {
@@ -47,18 +55,22 @@ export const MyCarousel = (props) => {
         desc:'Esta aplicação será traduzida em Portugues',
         text:'Portugues',
         titre:"Lingua",
+        link:"http://www.google.fr",
+        btnValid: 'Validar',
     }, 
 
     {
         imgSrc:dArabe,
         lang:'Arabe',
-        desc:'وسيترجم هذا التطبيق إلى اللغة الرومانية',
+        desc:'هذا التطبيق سوف يترجم إلى اللغة العربية',
         text:'العربية',
         titre:"لغة",
+        link:"http://www.google.fr",
+        btnValid: 'للتحقق من صحة',
     }];
 
-    const previousSlide = (evt) => {
 
+    const previousSlide = (evt) => {
         if(slideIndex < 1 ){
             setSlideIndex(slideIndex=tabLangues.length -1);
         }else{
@@ -66,8 +78,8 @@ export const MyCarousel = (props) => {
         }
     }
 
-    const nextSlide = (evt) => {
 
+    const nextSlide = (evt) => {
         if(slideIndex >= tabLangues.length -1){
             setSlideIndex(slideIndex = 0);
         }
@@ -76,9 +88,11 @@ export const MyCarousel = (props) => {
         }
     }
 
+
+
     return (
-        <div className="container pt-5">
-            <h1 className="mb-5">
+        <div className="container mt-5">
+            <h1 className="pt-5">
                {tabLangues[slideIndex].titre}
             </h1>
 
@@ -86,7 +100,7 @@ export const MyCarousel = (props) => {
             <div className="row justify-content-center">
                 <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
 
-                    <div className="carousel-inner mt-5">
+                    <div className="carousel-inner mt-4">
                         {tabLangues.map((item, i) => {
                             const {lang, imgSrc, text, desc, titre} =item;
                             return <MyCarouselItem key={lang} lang={lang} imgSrc={imgSrc} text={text} desc={desc} visible={i === slideIndex} titre={titre} />;
@@ -107,15 +121,18 @@ export const MyCarousel = (props) => {
                         </span>
                     </button>
 
-                   
+                    {/* BOUTONS VALIDER */}
+                    <button className="btn btn-success mt-5 btn-lg" onClick={handleValidClick.bind(this, "Accueil")}>{tabLangues[slideIndex].btnValid}</button>
                 </div>
 
                 <div className="">
-                    <span class=""><img src={dFrance} alt="" class="miniflag"/></span>
-                    <span class=""><img src={dAngleterre} alt="" class="miniflag"/></span>
+                    <MiniFlag data={tabLangues} setSlideIndex={setSlideIndex}/>
+
+                    {/* <span class=""><a href="http://www.google.fr"><img src={dFrance} alt="" class="miniflag"/></a></span> */}
+                    {/* <span class=""><img src={dAngleterre} alt="" class="miniflag"/></span>
                     <span class=""><img src={dRoumanie} alt="" class="miniflag"/></span>
                     <span class=""><img src={dPortugal} alt="" class="miniflag"/></span>
-                    <span class=""><img src={dArabe} alt="" class="miniflag"/></span>
+                    <span class=""><img src={dArabe} alt="" class="miniflag"/></span> */}
                 </div>
 
             </div>
