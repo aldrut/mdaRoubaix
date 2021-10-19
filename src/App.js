@@ -5,16 +5,27 @@ import './assets/css/general.css'
 
 //Import pages
 import { Home } from './pages/Home';
+import { Accueil } from './pages/Accueil';
+import { useState } from 'react';
 
 
 
 function App() {
+	const [route, setRoute] = useState(window.history.state || 'Home')
+
+    window.onpopstate = (evt) => {
+        setRoute(window.history.state || 'Home')
+    }
+
+    const handleValidClick = (route) => {
+        window.history.pushState(route, route);
+        setRoute(route);
+    }
+
 	return (
 		<div className="App">
-			<Home/> 
-
-{/* <Accueil></Accueil> */}
-
+			{route === "Home" && <Home handleValidClick={handleValidClick}/>} 
+			{route === "Accueil" &&  <Accueil/> }
 		</div>
 	);
 }
