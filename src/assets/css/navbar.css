@@ -1,0 +1,12 @@
+.search{
+    width: 150px !important;
+}
+
+.avatar{
+    font-size: 2.5em !important;
+}
+
+.bgNavbar{
+    /* background: linear-gradient(127deg, #2888c9, rgb(168, 233, 125)); */
+    background: linear-gradient(127deg, #c92828, rgb(233, 226, 125));
+}

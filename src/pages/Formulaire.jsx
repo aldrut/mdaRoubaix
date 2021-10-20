@@ -1,20 +1,19 @@
 //IMPORTS CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MyItem from "../assets/css/item";
+// import MyItem from "../assets/css/item";
+import {Navbar} from '../components/Navbar.jsx';
 
 //IMPORTS DIVERS
 import React, { useState } from "react";
 import { MyCarousel } from '../components/MyCarousel';
 
 
-export function Home(props) {
+export function Formulaire(props) {
     const {handleValidClick} = props;
 
     return ( 
         <>
-            <div className="display-6 fw-bold col-10 mx-auto ">
-                Maison Des Associations de Roubaix
-            </div>
+            <Navbar/>
 
             <MyCarousel data={null} handleValidClick={handleValidClick} />
         </>

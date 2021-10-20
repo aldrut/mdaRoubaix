@@ -1,23 +1,27 @@
-import dFrance from "../assets/drapeaux/dFr.png";
-import dAngleterre from "../assets/drapeaux/dAng.png";
-import dRoumanie from "../assets/drapeaux/dRoum.png";
-import dPortugal from "../assets/drapeaux/dPort.png";
-import dArabe from "../assets/drapeaux/dAra.png";
+//IMPORTS DRAPEAUX
+import dFrance from "../assets/img/drapeaux/dFr.png";
+import dAngleterre from "../assets/img/drapeaux/dAng.png";
+import dRoumanie from "../assets/img/drapeaux/dRoum.png";
+import dPortugal from "../assets/img/drapeaux/dPort.png";
+import dArabe from "../assets/img/drapeaux/dAra.png";
+
+//IMPORTS CAROUSEL
 import { MyCarouselItem } from "./MyCarouselItem";
 import { MiniFlag } from "./MiniFlag";
-import React, {useState} from 'react';
 import {FaArrowAltCircleRight} from 'react-icons/fa';
 import {FaArrowAltCircleLeft} from 'react-icons/fa';
 
+//IMPORTS DIVERS
+import React, {useState} from 'react';
 import '../assets/css/carousel.css';
 
-export const MyCarousel = (props) => {
 
+
+export const MyCarousel = (props) => {
     const {handleValidClick} = props;
     let [slideIndex, setSlideIndex] = useState(0);
 
-    
-
+    //TABLEAU DES LANGUES
     const tabLangues = [
     {
         imgSrc:dFrance,
@@ -70,6 +74,7 @@ export const MyCarousel = (props) => {
     }];
 
 
+    //FONCTION SLIDE PRECEDENTE
     const previousSlide = (evt) => {
         if(slideIndex < 1 ){
             setSlideIndex(slideIndex=tabLangues.length -1);
@@ -78,7 +83,7 @@ export const MyCarousel = (props) => {
         }
     }
 
-
+    //FONCTION SLIDE SUIVANTE
     const nextSlide = (evt) => {
         if(slideIndex >= tabLangues.length -1){
             setSlideIndex(slideIndex = 0);
@@ -88,15 +93,13 @@ export const MyCarousel = (props) => {
         }
     }
 
-
-
     return (
         <div className="container mt-5">
             <h1 className="pt-5">
                {tabLangues[slideIndex].titre}
             </h1>
 
-            {/* Caroussel */}
+            {/* CAROUSEL */}
             <div className="row justify-content-center">
                 <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
 
@@ -125,19 +128,12 @@ export const MyCarousel = (props) => {
                     <button className="btn btn-success mt-5 btn-lg" onClick={handleValidClick.bind(this, "Accueil")}>{tabLangues[slideIndex].btnValid}</button>
                 </div>
 
+                {/* MINIS FLAGS */}  
                 <div className="">
                     <MiniFlag data={tabLangues} setSlideIndex={setSlideIndex}/>
-
-                    {/* <span class=""><a href="http://www.google.fr"><img src={dFrance} alt="" class="miniflag"/></a></span> */}
-                    {/* <span class=""><img src={dAngleterre} alt="" class="miniflag"/></span>
-                    <span class=""><img src={dRoumanie} alt="" class="miniflag"/></span>
-                    <span class=""><img src={dPortugal} alt="" class="miniflag"/></span>
-                    <span class=""><img src={dArabe} alt="" class="miniflag"/></span> */}
                 </div>
 
             </div>
         </div>
-
     );
-
 }
