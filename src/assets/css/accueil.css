@@ -1,18 +1,24 @@
 /*********** BOUTONS ***********/
     .menuButton{
         width : 130px;
-        height: 105px !important; 
+        height: 105px; 
         border-radius: 5px;
 
         /* background: linear-gradient(127deg, #c92828, #c9b928); */
         /* background-color: rgb(206, 111, 48); */
         /* background-color: rgb(90, 137, 175); */
-        background-color: rgb(90, 106, 175);
+        /* background-color: rgb(90, 106, 175); */
+        background-color: #b93f3b;
 
         border: black solid 2px;
         box-shadow: 10px 10px 5px rgb(97, 97, 97);
         color: white;
     }
+
+    .menuButton:hover{
+        background-color: rgb(43, 43, 43);
+    }
+
 
 /*********** ICONES ***********/
     .icones{
@@ -28,4 +34,3 @@
     .mt-15px{
         margin-top: 15px;
     }
-    

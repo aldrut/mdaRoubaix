@@ -21,83 +21,80 @@ export function Accueil() {
 
         <>
             <Navbar/>
-
             <div className="container pt-3">
-                {/* <div className="display-5 fw-bold">
-                    Maison Des Associations de Roubaix
-                </div> */}
-
-                    {/* LIGNE N°1 */}
-                    <div className="row">
-                        <div className="col-4 menuButton mx-auto mt-4">
-                            <GiKnifeFork className="icones mt-15px"></GiKnifeFork>
-                            <br />
-                            Se nourrir
-                        </div>
-
-                        <div className="col-4 menuButton mx-auto mt-4">
-                            <GiHouse className="icones mt-15px"></GiHouse>
-                            <br/>
-                            Se loger
-                        </div>
+                {/* LIGNE N°1 */}
+                <div className="row">
+                    <div className="col-4 menuButton mx-auto mt-4">
+                        <GiKnifeFork className="icones mt-15px"></GiKnifeFork>
+                        <br />
+                        Se nourrir
                     </div>
 
-                    {/* LIGNE N°2 */}    
-                    <div className="row">
-                        <div className="col-4 menuButton mx-auto mt-4">
-                            <GiBookmarklet className="icones mt-15px"></GiBookmarklet>
-                            <br/>  
-                            Apprendre
-                        </div>
+                    <div className="col-4 menuButton mx-auto mt-4">
+                        <GiHouse className="icones mt-15px"></GiHouse>
+                        <br/>
+                        Se loger
+                    </div>
+                </div>
 
-                        <div className="col-4 menuButton mx-auto mt-4">
-                            <BiWalk className="icones mt-15px"></BiWalk>
-                            <br/>  
-                            Se Déplacer
-                        </div>
+
+                {/* LIGNE N°2 */}    
+                <div className="row">
+                    <div className="col-4 menuButton mx-auto mt-4">
+                        <GiBookmarklet className="icones mt-15px"></GiBookmarklet>
+                        <br/>  
+                        Apprendre
                     </div>
 
-                    {/* LIGNE N°3 */} 
-                    <div className="row">
-                        <div className="col-4 menuButton mx-auto mt-4"> 
-                            <GiHealthNormal className="icones mt-15px"></GiHealthNormal>
-                            <br />
-                            Se Soigner
-                        </div>
+                    <div className="col-4 menuButton mx-auto mt-4">
+                        <BiWalk className="icones mt-15px"></BiWalk>
+                        <br/>  
+                        Se Déplacer
+                    </div>
+                </div>
 
-                        <div className="col-4 menuButton mx-auto mt-4">
-                            <FaBalanceScale className="icones mt-15px"/> 
-                            <br/>
-                            Aide Juridique
-                        </div>
+
+                {/* LIGNE N°3 */} 
+                <div className="row">
+                    <div className="col-4 menuButton mx-auto mt-4"> 
+                        <GiHealthNormal className="icones mt-15px"></GiHealthNormal>
+                        <br />
+                        Se Soigner
                     </div>
 
-
-                    {/* LIGNE N°4 */} 
-                    <div className="row">
-                        <div className="col-4 menuButton mx-auto mt-4">
-                            <FaRegBuilding className="icones mt-5px"></FaRegBuilding> 
-                            <br/> 
-                            Aide Administrative
-                        </div>
-
-                        <div className="col-4 menuButton mx-auto mt-4" onClick={ToDress} id="toDress">
-                            <GiClothes className="icones mt-15px"></GiClothes>
-                            <br/>   
-                            S'habiller
-                        </div>
+                    <div className="col-4 menuButton mx-auto mt-4">
+                        <FaBalanceScale className="icones mt-15px"/> 
+                        <br/>
+                        Aide Juridique
                     </div>
-                    
+                </div>
 
-                    {/* LIGNE N°5 */} 
-                    <div className="row">
-                        <div className="col-4 menuButton mx-auto my-4" onClick={ToDress} id="toDress">
-                            {/* <SiHandshake className="icones mt-15px"></SiHandshake> */}
-                            <GiThreeFriends className="icones mt-15px"></GiThreeFriends>
-                            <br/>   
-                            S'insérer
-                        </div>
+
+                {/* LIGNE N°4 */} 
+                <div className="row">
+                    <div className="col-4 menuButton mx-auto mt-4">
+                        <FaRegBuilding className="icones mt-5px"></FaRegBuilding> 
+                        <br/> 
+                        Aide Administrative
                     </div>
+
+                    <div className="col-4 menuButton mx-auto mt-4" onClick={ToDress} id="toDress">
+                        <GiClothes className="icones mt-15px"></GiClothes>
+                        <br/>   
+                        S'habiller
+                    </div>
+                </div>
+                
+
+                {/* LIGNE N°5 */} 
+                <div className="row">
+                    <div className="col-4 menuButton mx-auto my-4" onClick={ToDress} id="toDress">
+                        {/* <SiHandshake className="icones mt-15px"></SiHandshake> */}
+                        <GiThreeFriends className="icones mt-15px"></GiThreeFriends>
+                        <br/>   
+                        S'insérer
+                    </div>
+                </div>
             </div>
         </>
     );

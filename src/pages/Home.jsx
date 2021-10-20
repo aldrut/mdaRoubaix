@@ -1,10 +1,8 @@
 //IMPORTS CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MyItem from "../assets/css/item";
 
 //IMPORTS DIVERS
-import React, { useState } from "react";
-import { MyCarousel } from '../components/MyCarousel';
+import { MainCarousel } from "../components/MainCarousel";
 
 
 export function Home(props) {
@@ -16,7 +14,7 @@ export function Home(props) {
                 Maison Des Associations de Roubaix
             </div>
 
-            <MyCarousel data={null} handleValidClick={handleValidClick} />
+            <MainCarousel data={null} handleValidClick={handleValidClick} />
         </>
     );
 }

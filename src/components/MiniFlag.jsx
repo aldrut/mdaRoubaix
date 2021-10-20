@@ -13,7 +13,7 @@ export const MiniFlag = (props) => {
             {
                 //Boucle parcourant le tableau des drapeaux et permettant l'affichage
                 data.map((item, i) => {                     
-                    const {text, imgSrc, link} = item;
+                    const {text, imgSrc} = item;
 
                     return ( 
                         <span className="" key={i}>
