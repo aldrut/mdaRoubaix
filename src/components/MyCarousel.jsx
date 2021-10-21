@@ -1,21 +1,22 @@
 
 //IMPORTS CAROUSEL
-import { MyCarouselItem } from "./MyCarouselItem";
+import {MyCarouselItem} from "./MyCarouselItem";
 import {FaArrowAltCircleRight} from 'react-icons/fa';
 import {FaArrowAltCircleLeft} from 'react-icons/fa';
 
 //IMPORTS DIVERS
 import '../assets/css/carousel.css';
+import { CustomButton } from './CustomButton';
 
 
 export const MyCarousel = (props) => {
-    const {handleValidClick, tabLangues, previousSlide, nextSlide, slideIndex} = props;
+    const {handleValidClick, tabLangues, previousSlide, nextSlide, slideIndex, showButton, route} = props;
 
     //RENVOI LE CAROUSEL
     return (
         <div className="container mt-5">
             <h1 className="pt-5">
-               {tabLangues[slideIndex].titre}
+               {tabLangues[slideIndex].titre }
             </h1>
 
             {/* Caroussel */}
@@ -23,10 +24,13 @@ export const MyCarousel = (props) => {
                 <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
 
                     <div className="carousel-inner mt-4">
-                        {tabLangues.map((item, i) => {
-                            const {lang, imgSrc, text, desc, titre} =item;
-                            return <MyCarouselItem key={lang} lang={lang} imgSrc={imgSrc} text={text} desc={desc} visible={i === slideIndex} titre={titre} />;
-                        })}
+                        {
+                            tabLangues.map((item, i) => {
+                                const {lang, imgSrc, text, desc, titre} =item;
+                                return <MyCarouselItem key={lang} lang={lang} imgSrc={imgSrc} text={text} desc={desc} visible={i === slideIndex} titre={titre} />;
+                                // return <MyCarouselItem visible={i === slideIndex} type={inputType} inputValue={inputValue} inputPlaceholder={inputPlaceholder} />;
+                            })
+                        }
                     </div>
 
                     {/* BOUTONS GAUCHE */}
@@ -43,8 +47,12 @@ export const MyCarousel = (props) => {
                         </span>
                     </button>
 
-                    {/* BOUTONS VALIDER */}
-                    <button className="btn btn-success mt-5 btn-lg" onClick={handleValidClick.bind(this, "Formulaire")}>{tabLangues[slideIndex].btnValid}</button>
+                    
+                    {
+                        /* BOUTONS VALIDER */
+                        showButton === true && <CustomButton className="btn-success" text={tabLangues[slideIndex].btnValid} route={route} handleValidClick={handleValidClick}/>  
+                    }
+
                 </div>
 
             </div>

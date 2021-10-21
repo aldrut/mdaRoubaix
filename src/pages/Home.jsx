@@ -14,7 +14,8 @@ export function Home(props) {
                 Maison Des Associations de Roubaix
             </div>
 
-            <MainCarousel data={null} handleValidClick={handleValidClick} />
+            <MainCarousel data={null} handleValidClick={handleValidClick} showMini={true} showButton={true} route="Formulaire" />
+
         </>
     );
 }

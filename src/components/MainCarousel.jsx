@@ -14,7 +14,7 @@ import React, {useState} from 'react';
 
 export const MainCarousel = (props) => {
 
-    const {route, text, handleMenuClick, handleValidClick} = props;
+    const {route, text, handleMenuClick, handleValidClick, showMini, showButton, inputType, inputValue, inputPlaceholder } = props;
     let [slideIndex, setSlideIndex] = useState(0);
 
     //TABLEAU DES LANGUES
@@ -73,7 +73,7 @@ export const MainCarousel = (props) => {
 
     //FONCTION SLIDE PRECEDENTE
     const previousSlide = (evt) => {
-        if(slideIndex < 1 ){
+        if(slideIndex < 1){
             setSlideIndex(slideIndex=tabLangues.length -1);
         }else{
             setSlideIndex(slideIndex - 1)
@@ -94,10 +94,31 @@ export const MainCarousel = (props) => {
 
     return (
         <>
-            <MyCarousel slideIndex={slideIndex} data={null} handleValidClick={handleValidClick} tabLangues={tabLangues} previousSlide={previousSlide} nextSlide={nextSlide}/>
+            <MyCarousel slideIndex={slideIndex} 
+                        showButton={showButton} 
+                        data={null} 
+                        handleValidClick={handleValidClick} 
+                        tabLangues={tabLangues} 
+                        previousSlide={previousSlide} 
+                        nextSlide={nextSlide} 
+                        route={route} 
+            />
+            
+            {/* <MyCarousel slideIndex={slideIndex} 
+                        showButton={showButton} 
+                        data={null} 
+                        handleValidClick={handleValidClick} 
+                        tabLangues={tabLangues} 
+                        previousSlide={previousSlide} 
+                        nextSlide={nextSlide} 
+                        route={route} 
+                        inputType={inputType}
+                        inputValue={inputValue}
+                        inputPlaceholder={inputPlaceholder}
+            /> */}
 
             <div className="">
-                <MiniFlag slideIndex={slideIndex} data={tabLangues} setSlideIndex={setSlideIndex}/>
+                <MiniFlag slideIndex={slideIndex} data={tabLangues} setSlideIndex={setSlideIndex} showMini={showMini}/>
             </div>
          </>
     );
