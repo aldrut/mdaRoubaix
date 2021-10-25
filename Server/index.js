@@ -2,7 +2,7 @@ const cors = require('cors');               //appel du package pour passer les s
 const mysql = require('mysql2');            //appel du package pour la connexion
 const express = require('express');         //appel du package pour faire des api
 const app = express();
-const port = 3310;
+const port = 3001;
 
 
 app.use(cors());
