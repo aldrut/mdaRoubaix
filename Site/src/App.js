@@ -26,6 +26,7 @@ function App() {
 			{route === "Home" && <Home handleValidClick={handleValidClick}/>} 
 			{route === "Formulaire" && <Formulaire handleValidClick={handleValidClick}/>} 
 			{route === "Accueil" &&  <Accueil/> }
+			{route === "Login" }
 		</div>
 	);
 }
