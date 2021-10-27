@@ -13,6 +13,7 @@ export function CustomRadio(props) {
 
     //met en localstorage la dernière valeur
     const onChange = (evt) => {
+        
         localStorage.setItem(id,evt.target.value);
         setValue(evt.target.value);
     }

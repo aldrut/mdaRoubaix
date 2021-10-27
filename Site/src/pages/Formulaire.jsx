@@ -76,8 +76,6 @@ export function Formulaire(props) {
     }
     
     
-    
-
 
     return (
         <>
@@ -90,18 +88,19 @@ export function Formulaire(props) {
             {/* questionnaire */}
             <div className="marginQuestion">
                 {
-                    questionList.map((item) => {
+                    questionList.map((item, idx) => {
+                        
                         if(item.ordre === currentQuestion){
 
                             switch (item.type) {
                                 case "radio":
-                                    return(<CustomRadio key={item.id} question={item.enonce} reponse1={item.reponse1} reponse2={item.reponse2} id={item.ordre} />);
+                                    return(<CustomRadio key={idx} question={item.enonce} reponse1={item.reponse1} reponse2={item.reponse2} id={item.ordre} />);
 
                                 case "text":
-                                    return(<CustomText question={item.enonce} key={item.id} type={item.type} />);
+                                    return(<CustomText question={item.enonce} key={idx} type={item.type} id={item.ordre}/>);
 
                                 case "date":
-                                    return(<CustomText question={item.enonce} key={item.id} type={item.type} />);
+                                    return(<CustomText question={item.enonce} key={idx} type={item.type} id={item.ordre}/>);
 
                                 default:
                                     return "";
@@ -119,6 +118,9 @@ export function Formulaire(props) {
                         <button onClick={nextQuestion} className="btn btn-success mt-5 col-3">Suivant</button>
                     </div>
                 </div>
+
+                {/* A ENLEVER */}
+                <CustomButton className="btn-warning mt-5" text="Page Login" route="Login" handleValidClick={handleValidClick}/>
             </div>
 
             <script src="../assets/js/formulaire.js"></script>

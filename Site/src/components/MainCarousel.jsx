@@ -103,19 +103,6 @@ export const MainCarousel = (props) => {
                         nextSlide={nextSlide} 
                         route={route} 
             />
-            
-            {/* <MyCarousel slideIndex={slideIndex} 
-                        showButton={showButton} 
-                        data={null} 
-                        handleValidClick={handleValidClick} 
-                        tabLangues={tabLangues} 
-                        previousSlide={previousSlide} 
-                        nextSlide={nextSlide} 
-                        route={route} 
-                        inputType={inputType}
-                        inputValue={inputValue}
-                        inputPlaceholder={inputPlaceholder}
-            /> */}
 
             <div className="">
                 <MiniFlag slideIndex={slideIndex} data={tabLangues} setSlideIndex={setSlideIndex} showMini={showMini}/>
