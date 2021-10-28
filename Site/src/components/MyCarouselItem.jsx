@@ -1,7 +1,7 @@
 export const MyCarouselItem = (props) =>{
 
-    const {lang, imgSrc, text, desc, visible, inputType, inputValue, inputPlaceholder} = props;
-
+    // const {lang, imgSrc, text, desc, visible, inputType, inputValue, inputPlaceholder} = props;
+    const {lang, imgSrc, text, desc, visible} = props;
 
     return (
         <div className={"carousel-item slide" + (visible ? " d-block" : "")} name={lang}>

@@ -3,7 +3,7 @@ import logo from "../assets/img/logo.png";
 import { BsFillPersonFill } from 'react-icons/bs'
 
 export const Navbar = (props) => {
-    const { handleRouterClick } = props;
+    // const { handleRouterClick } = props;
 
     return (
 

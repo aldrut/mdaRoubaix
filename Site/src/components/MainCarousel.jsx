@@ -14,7 +14,8 @@ import React, {useState} from 'react';
 
 export const MainCarousel = (props) => {
 
-    const {route, text, handleMenuClick, handleValidClick, showMini, showButton, inputType, inputValue, inputPlaceholder } = props;
+    // const {route, text, handleMenuClick, handleValidClick, showMini, showButton, inputType, inputValue, inputPlaceholder } = props;
+    const {route, handleValidClick, showMini, showButton } = props;
     let [slideIndex, setSlideIndex] = useState(0);
 
     //TABLEAU DES LANGUES
