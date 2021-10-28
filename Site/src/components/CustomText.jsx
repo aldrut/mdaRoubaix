@@ -22,14 +22,15 @@ export function CustomText(props){
         let lastVal = localStorage.getItem(id);
         if(lastVal != null) setValue(lastVal);
         setSelect(localStorage.getItem(id));  
-        props.passedFunction(lastVal === "" ? true :false);
+        props.passedFunction(lastVal ? false : true);  
     },[id]);
 
     //MET EN LOCALSTORAGE LA DERNIERE VALEUR 
     const onChange = (evt) => {
         localStorage.setItem(id,evt.target.value);
         setValue(evt.target.value);
-        props.passedFunction(evt.target.value !== "" ? true :false);  
+        // props.passedFunction(evt.target.value !== "" ? false : true); 
+        props.passedFunction((evt.target.value !== "" && evt.target.value >=0 && evt.target.value <=25 ) ? false : true);  
     }
 
 
@@ -45,7 +46,8 @@ export function CustomText(props){
                 </div>
                 
                 {/* INPUT TEXT */}
-                <input key={"key1_" + id} onChange={onChange} type="text" hidden={type === "date"} maxLength="2" className="col-4 mt-3" value={val}></input>
+                {/* <input key={"key1_" + id} onChange={onChange} onKeyPress={handleKeyPress} type="text" hidden={type === "date"} maxLength="2" className="col-4 mt-3" value={val} ></input> */}
+                <input key={"key1_" + id} onChange={onChange} type="number" hidden={type === "date"} min = "0" max="25" className="col-4 mt-3" value={val} ></input>
                 
                 {/* INPUT SELECT (POUR LA DATE DE NAISSANCE) */}
                 <select key={"key2_" + id} onChange={onChange} name="select" hidden={type === "text"} className="col-4 mt-3" value={val}>

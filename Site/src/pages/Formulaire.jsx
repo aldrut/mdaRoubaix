@@ -50,17 +50,18 @@ export function Formulaire(props) {
             // <CustomLogin></CustomLogin>
         }else{
             setCurrentQuestion(currentQuestion +1);
+            setButtonProps(true); 
         }
     }
 
 
-    // const [buttonProps, setButtonProps] = useState(true);
-    const [buttonProps, setButtonProps] = useState((!Object.keys(localStorage)) ? true : false);
+    const [buttonProps, setButtonProps] = useState(true);
+    // const [buttonProps, setButtonProps] = useState((!Object.keys(localStorage)) ? true : false);
 
 
     //FONCTION ENABLED BUTTON
-    const enabledButton = () => {
-        setButtonProps(!buttonProps); 
+    const enabledButton = (newValue) => {
+        setButtonProps(newValue); 
     }
 
     // const [activeButton, setEnabledButton] = useState(enabledButton);

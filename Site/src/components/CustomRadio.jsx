@@ -10,7 +10,7 @@ export function CustomRadio(props) {
     useEffect(()=> {
         let lastVal = localStorage.getItem(id);
         if(lastVal != null) setValue(lastVal);
-        props.passedFunction(lastVal === "" ? true :false);
+        props.passedFunction(!lastVal);
     },[id]);
 
 
@@ -18,7 +18,7 @@ export function CustomRadio(props) {
     const onChange = (evt) => {
         localStorage.setItem(id,evt.target.value);
         setValue(evt.target.value);
-        props.passedFunction(evt.target.value !== "" ? true :false);
+        props.passedFunction(!evt.target.checked);
     }
 
 
