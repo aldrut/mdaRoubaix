@@ -52,7 +52,6 @@ export function CustomText(props){
 
 
 
-
     return(
         
         <div className="row enfants">
