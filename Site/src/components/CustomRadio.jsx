@@ -4,23 +4,27 @@ import { useEffect, useState} from 'react';
 export function CustomRadio(props) {
     const {reponse1, reponse2, question, id} = props;
     const [val, setValue] = useState('');
-    
-    //récupère en localstorage la dernière valeur
+
+
+    //RECUPERE EN LOCALSTORAGE LA DERNIERE VALEUR 
     useEffect(()=> {
         let lastVal = localStorage.getItem(id);
         if(lastVal != null) setValue(lastVal);
+        props.passedFunction(!lastVal);
     },[id]);
 
-    //met en localstorage la dernière valeur
+
+    //MET EN LOCALSTORAGE LA DERNIERE VALEUR 
     const onChange = (evt) => {
         localStorage.setItem(id,evt.target.value);
         setValue(evt.target.value);
+        props.passedFunction(!evt.target.checked);
     }
 
 
     return(
         <div className="row sectionRadio" id={id}>
-            {/* affiche la question */}
+            {/* AFFICHE LA QUESTION */}
             <div className="col-11 h2 mx-auto">
                 {question}
             </div>
@@ -28,7 +32,7 @@ export function CustomRadio(props) {
             <div className="row mt-4">
                 <div className="col-3 mx-auto">
                     <div className="form-check mx-auto">
-                        {/* input de la reponse n°1 qui se check ou pas selon la réponse stoqué en localstorage */}
+                        {/* INPUT Q.1 SE COCHE OU PAS SELON LA REP. STOQUE EN LOCALSTORAGE */}
                         <input onChange={onChange} className="form-check-input" type="radio" name={"reponse" + id} value={reponse1}  checked={(val === reponse1)} />
                         
                         <label className ="form-check-label h4" >
@@ -39,7 +43,7 @@ export function CustomRadio(props) {
 
                 <div className="col-3 mx-auto">
                     <div className="form-check mx-auto">
-                        {/* input de la reponse n°2 qui se check ou pas selon la réponse stoqué en localstorage */}
+                        {/* INPUT Q. SE COCHE OU PAS SELON LA REP. STOQUE EN LOCALSTORAGE */}
                         <input onChange={onChange} className="form-check-input" type="radio" name={"reponse" + id} value={reponse2} checked={(val === reponse2)} />
                         
                         <label className ="form-check-label h4">

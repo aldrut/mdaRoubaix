@@ -4,7 +4,7 @@ import './App.css';
 import './assets/css/general.css';
 
 //Import pages
-import { Accueil, Formulaire, Home } from './pages';
+import { Accueil, Formulaire, Home, Login } from './pages';
 import { useState } from 'react';
 
 
@@ -25,8 +25,8 @@ function App() {
 		<div className="App">
 			{route === "Home" && <Home handleValidClick={handleValidClick}/>} 
 			{route === "Formulaire" && <Formulaire handleValidClick={handleValidClick}/>} 
-			{route === "Accueil" &&  <Accueil/> }
-			{route === "Login" }
+			{route === "Accueil" && <Accueil/> }
+			{route === "Login" && <Login/>}
 		</div>
 	);
 }

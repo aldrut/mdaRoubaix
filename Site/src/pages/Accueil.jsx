@@ -4,7 +4,7 @@ import { GiHealthNormal, GiClothes, GiHouse, GiThreeFriends, GiKnifeFork, GiBook
 import { FaBalanceScale, FaRegBuilding } from 'react-icons/fa'
 
 //IMPORTS DIVERS
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import {Navbar} from '../components/Navbar.jsx';
 
 //IMPORTS CSS
@@ -12,9 +12,8 @@ import '../assets/css/accueil.css';
 
 
 export function Accueil() {
-    const [LanguageChoice, setLanguageChoice] = useState("");
+    // const [LanguageChoice, setLanguageChoice] = useState("");
 
-    //setLanguageChoice = "Français";
     const ToDress = (evt) => alert(evt.currentTarget.id);
 
     return (

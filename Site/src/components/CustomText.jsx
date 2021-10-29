@@ -4,28 +4,51 @@ import {useState, useEffect} from 'react';
 export function CustomText(props){
     const {question, id, type} = props;
     const [val, setValue] = useState('');
+    const [select, setSelect] = useState([]);
+    const [message,setMessage] = useState('');
     
-    // creation de la date actuelle
+    //CREATION DATE ACTUELLE 
     let anneeActuel = new Date();
     anneeActuel = anneeActuel.getFullYear();
     
-    //tableau de dates de naissance (date actuelle -100 ans)
+    //TABLEAU DATES DE NAISSANCES (DATE ACTUELLE -100 ANS) 
     let tabAnnee = [];
     for(let i = 1 ; i<= 100 ; i++){
         tabAnnee.push((anneeActuel -12) - i);
     }
 
-    //récupère en localstorage la dernière valeur
+
+    //RECUPERE EN LOCALSTORAGE LA DERNIER VALEUR 
     useEffect(()=> {
         let lastVal = localStorage.getItem(id);
         if(lastVal != null) setValue(lastVal);
+        setSelect(localStorage.getItem(id));  
+        props.passedFunction(lastVal ? false : true);  
     },[id]);
 
-    //met en localstorage la dernière valeur
+    //MET EN LOCALSTORAGE LA DERNIERE VALEUR 
     const onChange = (evt) => {
         localStorage.setItem(id,evt.target.value);
         setValue(evt.target.value);
+        // props.passedFunction(evt.target.value !== "" ? false : true); 
+        props.passedFunction(evt.target.value !== "" || 
+                            ((evt.target.type === "date" && evt.target.value >=0 && evt.target.value <=25 && evt.target.length <2 ) || 
+                            (evt.target.type === "select")) ? false : true);  
+
+
     }
+
+    const onKeyUp = (evt) => {
+        let result = Number.parseInt(evt.target.value);
+        props.passedFunction(result ? false : true);  
+        // console.log("ceci n'est pas un chiffre");
+        if(!result){
+            setMessage("Veuillez saisir un nombre");
+        }else{
+            setMessage("");
+        }
+        
+    } 
 
 
 
@@ -34,20 +57,25 @@ export function CustomText(props){
         <div className="row enfants">
             <div className="">
 
-                {/* affiche la question */}
+                {/* AFFICHE LA QUESTION */}
                 <div className="text-center h4">
                     {question}
                 </div>
                 
-                {/* input type text */}
-                <input key={id} text={val} onChange={onChange} type="text" hidden={type === "date"} maxLength="2" className="col-4 mt-3"/>
+                {/* INPUT TEXT */}
+                <input key={"key1_" + id} onChange={onChange} type="text" hidden={type !== "text"} min = "0" max="25" className="col-4 mt-3" value={val} ></input>
                 
-                {/* input type select (pour la date) */}
-                <select onChange={onChange} name="select" hidden={type === "text"} className="col-4 mt-3">
+                {/* INPUT NUMBER */}
+                <input key={"key3_" + id} onChange={onChange} onKeyUp={onKeyUp} type="text" hidden={type !== "number"} min = "0" max="25" className="col-4 mt-3" value={val} ></input>
+                <div><label htmlFor="" className="text-danger fw-bold">{message} </label></div>
+
+                {/* INPUT DATE (SELECT) */}
+                <select key={"key2_" + id} onChange={onChange} name="select" hidden={type !== "date"} className="col-4 mt-3" value={val} type="select">
+                    
                     {/* boucle affichant les dates dans les options du select */}
                     {
                         tabAnnee.map((item, i) => {
-                            return (<option value="test">{item}</option> );
+                            return (<option key={i} > {item} </option>);
                         })
                     }
                 </select>

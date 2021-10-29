@@ -5,7 +5,6 @@ import '../assets/css/formulaire.css';
 
 
 //IMPORTS DIVERS
-import { MainCarousel } from '../components/MainCarousel';
 import { CustomButton } from '../components/CustomButton';
 import { Navbar } from '../components/Navbar';
 import { useState, useEffect } from 'react';
@@ -14,25 +13,15 @@ import { useState, useEffect } from 'react';
 
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import  Axios from 'axios';
-import { NavItem } from 'react-bootstrap';
 import { CustomRadio } from '../components/CustomRadio';
 import { CustomText } from '../components/CustomText';
 import { CustomLogin } from '../components/CustomLogin';
-import DatePicker from 'react-date-picker';
 
 
 
 export function Formulaire(props) {
     
     const { handleValidClick, submitClick } = props;
-    const [sexe, setSexe] = useState('');
-    const [enfants, setEnfants] = useState('');
-    const [etudiant, setEtudiant] = useState('');
-    const [chomage, setChomage] = useState('');
-    const [retraite, setRetraite] = useState('');
-    const [sdf, setSdf] = useState('');
-    const [handicap, setHandicap] = useState('');
-    const [anniv, setAnniv] = useState('');
     const [questionList, setQuestionList] = useState([]);
     let [currentQuestion, setCurrentQuestion] = useState(1);
     let count = questionList.length;
@@ -42,83 +31,93 @@ export function Formulaire(props) {
             setQuestionList(response.data);
         });
     },[]
-    
     );
-
-
-    // const submitClick = () =>{
-
-    // }
-
 
 
     //FONCTION SLIDE PRECEDENTE
     const previousQuestion = (evt) => {
         if(currentQuestion === 1){
             // setCurrentQuestion(currentQuestion = questionList.length -1);
-
         }else{
             setCurrentQuestion(currentQuestion - 1)
         }
     }
+
     
     //FONCTION SLIDE SUIVANTE
     const nextQuestion = (evt) => {
-        // console.log(evt.currenttarget.value);
         if(currentQuestion === questionList.length){
-            <CustomLogin></CustomLogin>
-            
-        }
-
-        else{
+            // <CustomLogin></CustomLogin>
+        }else{
             setCurrentQuestion(currentQuestion +1);
+            setButtonProps(true); 
         }
     }
-    
-    
-    
 
+
+    const [buttonProps, setButtonProps] = useState(true);
+    // const [buttonProps, setButtonProps] = useState((!Object.keys(localStorage)) ? true : false);
+
+
+    //FONCTION ENABLED BUTTON
+    const enabledButton = (newValue) => {
+        setButtonProps(newValue); 
+    }
+
+    // const [activeButton, setEnabledButton] = useState(enabledButton);
+    
 
     return (
         <>
             <Navbar />
             <h1 className="mt-4">Questionnaire :</h1>
 
-            {/* progress Bar */}
+            {/* PROGRESS BAR */}
             <div className="mt-3 w-75 mx-auto"><ProgressBar now={currentQuestion*13} className='font-weight-bolder h1 bg-secondary' label={`${currentQuestion} / ${count}`} animated striped variant="danger"/></div>
             
-            {/* questionnaire */}
+            {/* QUESTIONNAIRE */}
             <div className="marginQuestion">
                 {
-                    questionList.map((item) => {
+                    questionList.map((item, idx) => {
                         if(item.ordre === currentQuestion){
+                            let eltToDisplay = "";
 
                             switch (item.type) {
                                 case "radio":
-                                    return(<CustomRadio key={item.id} question={item.enonce} reponse1={item.reponse1} reponse2={item.reponse2} id={item.ordre} />);
-
+                                    eltToDisplay = (<CustomRadio key={idx} question={item.enonce} reponse1={item.reponse1} reponse2={item.reponse2} id={item.ordre} passedFunction={enabledButton} />);
+                                    break;
                                 case "text":
-                                    return(<CustomText question={item.enonce} key={item.id} type={item.type} />);
-
+                                    eltToDisplay = (<CustomText question={item.enonce} key={idx} type={item.type} id={item.ordre} passedFunction={enabledButton} />);
+                                    break;
                                 case "date":
-                                    return(<CustomText question={item.enonce} key={item.id} type={item.type} />);
-
+                                    eltToDisplay =(<CustomText question={item.enonce} key={idx} type={item.type} id={item.ordre} passedFunction={enabledButton} />);
+                                    break;
+                                case "number":
+                                    eltToDisplay =(<CustomText question={item.enonce} key={idx} type={item.type} id={item.ordre} passedFunction={enabledButton} />);
+                                    break;
                                 default:
-                                    return "";
+                                    eltToDisplay = "";
+                                    break;
                             }
+                            return eltToDisplay;
                         }
                         return "";
                     })
                 }
 
-                {/* buttons */}
+
+                {/* BUTTONS */}
                 <div className="form pt-5 size">
                     <div className="row justify-content-center">
                         <button onClick={previousQuestion} className="btn btn-danger mt-5 col-3" disabled={currentQuestion === 1}>Retour</button>
                         <div className="col-3"></div>
-                        <button onClick={nextQuestion} className="btn btn-success mt-5 col-3">Suivant</button>
+                        <button onClick={nextQuestion} className="btn btn-success mt-5 col-3" disabled={buttonProps}>Suivant</button>
                     </div>
                 </div>
+
+
+                {/* BTN A ENLEVER PLUS TARD */}
+                <CustomButton className="btn-warning mt-5" text="Page Login" route="Login" handleValidClick={handleValidClick}/>
             </div>
 
             <script src="../assets/js/formulaire.js"></script>

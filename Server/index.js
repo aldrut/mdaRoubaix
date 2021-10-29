@@ -13,6 +13,7 @@ app.use(express.urlencoded ({extended:true}));
 //Creation du pool de connexion
     const db = mysql.createPool({
         host: "localhost",
+        // host: "10.115.58.226",
         user: "root",
         password: "",
         database: "mda_roubaix",
