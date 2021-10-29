@@ -14,9 +14,10 @@ export function Login() {
                 <div className="container h-100">
                     <div className="d-flex justify-content-center h-100">
                         <div className="user_card">
+                            <h1 className="fw-bolder text-light">Connexion</h1>
+
                             <div className="d-flex justify-content-center form_container">
                                 <form>
-
                                     {/* LOGIN */}
                                     <div className="input-group mb-3">
                                         <div className="input-group-append">
@@ -35,10 +36,10 @@ export function Login() {
 
                                     {/* REMEMBER */}
                                     <div className="form-group mt-5">
-                                        <div className="custom-control custom-checkbox">
+                                        {/* <div className="custom-control custom-checkbox">
                                             <input type="checkbox" className="custom-control-input" id="customControlInline"/>
-                                            <label className ="custom-control-label" for="customControlInline">Remember me</label>
-                                        </div>
+                                            <label className ="custom-control-label" >Remember me</label>
+                                        </div> */}
                                     </div>
 
                                     {/* BUTTON LOGIN */}
