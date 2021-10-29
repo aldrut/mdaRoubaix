@@ -92,6 +92,9 @@ export function Formulaire(props) {
                                 case "date":
                                     eltToDisplay =(<CustomText question={item.enonce} key={idx} type={item.type} id={item.ordre} passedFunction={enabledButton} />);
                                     break;
+                                case "number":
+                                    eltToDisplay =(<CustomText question={item.enonce} key={idx} type={item.type} id={item.ordre} passedFunction={enabledButton} />);
+                                    break;
                                 default:
                                     eltToDisplay = "";
                                     break;

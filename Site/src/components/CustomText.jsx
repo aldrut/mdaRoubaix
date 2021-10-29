@@ -5,6 +5,7 @@ export function CustomText(props){
     const {question, id, type} = props;
     const [val, setValue] = useState('');
     const [select, setSelect] = useState([]);
+    const [message,setMessage] = useState('');
     
     //CREATION DATE ACTUELLE 
     let anneeActuel = new Date();
@@ -30,8 +31,25 @@ export function CustomText(props){
         localStorage.setItem(id,evt.target.value);
         setValue(evt.target.value);
         // props.passedFunction(evt.target.value !== "" ? false : true); 
-        props.passedFunction((evt.target.value !== "" && evt.target.value >=0 && evt.target.value <=25 ) ? false : true);  
+        props.passedFunction(evt.target.value !== "" || 
+                            ((evt.target.type === "date" && evt.target.value >=0 && evt.target.value <=25 && evt.target.length <2 ) || 
+                            (evt.target.type === "select")) ? false : true);  
+
+
     }
+
+    const onKeyUp = (evt) => {
+        let result = Number.parseInt(evt.target.value);
+        props.passedFunction(result ? false : true);  
+        // console.log("ceci n'est pas un chiffre");
+        if(!result){
+            setMessage("Veuillez saisir un nombre");
+        }else{
+            setMessage("");
+        }
+        
+    } 
+
 
 
 
@@ -40,17 +58,21 @@ export function CustomText(props){
         <div className="row enfants">
             <div className="">
 
-                {/* AFFICVHE LA QUESTION */}
+                {/* AFFICHE LA QUESTION */}
                 <div className="text-center h4">
                     {question}
                 </div>
                 
                 {/* INPUT TEXT */}
-                {/* <input key={"key1_" + id} onChange={onChange} onKeyPress={handleKeyPress} type="text" hidden={type === "date"} maxLength="2" className="col-4 mt-3" value={val} ></input> */}
-                <input key={"key1_" + id} onChange={onChange} type="number" hidden={type === "date"} min = "0" max="25" className="col-4 mt-3" value={val} ></input>
+                <input key={"key1_" + id} onChange={onChange} type="text" hidden={type !== "text"} min = "0" max="25" className="col-4 mt-3" value={val} ></input>
                 
-                {/* INPUT SELECT (POUR LA DATE DE NAISSANCE) */}
-                <select key={"key2_" + id} onChange={onChange} name="select" hidden={type === "text"} className="col-4 mt-3" value={val}>
+                {/* INPUT NUMBER */}
+                <input key={"key3_" + id} onChange={onChange} onKeyUp={onKeyUp} type="text" hidden={type !== "number"} min = "0" max="25" className="col-4 mt-3" value={val} ></input>
+                <div><label htmlFor="" className="text-danger fw-bold">{message} </label></div>
+
+                {/* INPUT DATE (SELECT) */}
+                <select key={"key2_" + id} onChange={onChange} name="select" hidden={type !== "date"} className="col-4 mt-3" value={val} type="select">
+                    
                     {/* boucle affichant les dates dans les options du select */}
                     {
                         tabAnnee.map((item, i) => {
