@@ -27,7 +27,8 @@ export function Formulaire(props) {
     let count = questionList.length;
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/api/GetAllQuestion').then((response) => {
+        // Axios.get('http://localhost:3001/api/GetAllQuestion').then((response) => {
+        Axios.get('http://10.115.58.226:3001/api/GetAllQuestion').then((response) => {
             setQuestionList(response.data);
         });
     },[]
@@ -111,13 +112,16 @@ export function Formulaire(props) {
                     <div className="row justify-content-center">
                         <button onClick={previousQuestion} className="btn btn-danger mt-5 col-3" disabled={currentQuestion === 1}>Retour</button>
                         <div className="col-3"></div>
-                        <button onClick={nextQuestion} className="btn btn-success mt-5 col-3" disabled={buttonProps}>Suivant</button>
+
+                        {/* BUTTONS VALIDER SELON QUESTIONS EN COURS */}
+                        <button onClick={nextQuestion}text="Continuer" className="btn btn-success mt-5 col-3" disabled={buttonProps} hidden={currentQuestion === questionList.length}>Suivant</button>
+                        <CustomButton onClick={nextQuestion} route="Login" handleValidClick={handleValidClick} text="Suivant" className={`btn btn-success mt-5 col-3 + ${currentQuestion < questionList.length ? "d-none" : ""}`} disabled={buttonProps}/>
                     </div>
                 </div>
 
 
                 {/* BTN A ENLEVER PLUS TARD */}
-                <CustomButton className="btn-warning mt-5" text="Page Login" route="Login" handleValidClick={handleValidClick}/>
+                {/* <CustomButton className="btn-warning mt-5" text="Page Login" route="Login" handleValidClick={handleValidClick}/> */}
             </div>
 
             <script src="../assets/js/formulaire.js"></script>

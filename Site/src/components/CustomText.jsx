@@ -26,6 +26,7 @@ export function CustomText(props){
         props.passedFunction(lastVal ? false : true);  
     },[id]);
 
+
     //MET EN LOCALSTORAGE LA DERNIERE VALEUR 
     const onChange = (evt) => {
         localStorage.setItem(id,evt.target.value);
@@ -34,26 +35,24 @@ export function CustomText(props){
         props.passedFunction(evt.target.value !== "" || 
                             ((evt.target.type === "date" && evt.target.value >=0 && evt.target.value <=25 && evt.target.length <2 ) || 
                             (evt.target.type === "select")) ? false : true);  
-
-
     }
 
+
+    //VERIFIER SI NBR DANS l'INPUT NUMBER
     const onKeyUp = (evt) => {
         let result = Number.parseInt(evt.target.value);
         props.passedFunction(result ? false : true);  
-        // console.log("ceci n'est pas un chiffre");
         if(!result){
             setMessage("Veuillez saisir un nombre");
         }else{
             setMessage("");
-        }
-        
+        }  
     } 
 
 
 
     return(
-        
+
         <div className="row enfants">
             <div className="">
 
