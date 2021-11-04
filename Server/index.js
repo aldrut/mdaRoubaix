@@ -3,14 +3,15 @@ const mysql = require('mysql2');            //appel du package pour la connexion
 const express = require('express');         //appel du package pour faire des api
 const app = express();
 const port = 3001;
-
+const bcrypt = require ('bcrypt');
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded ({extended:true}));
 
 
-//Creation du pool de connexion
+// **************************** CONNEXION **************************** //
+//POOL DE CONNEXION
     const db = mysql.createPool({
         host: "localhost",
         // host: "10.115.58.226",
@@ -24,32 +25,95 @@ app.use(express.urlencoded ({extended:true}));
         res.send('API NODE');
     });
 
+//CONNEXION
+    app.post('/api/connexion/', (req, res) =>{
+        const mail = req.body.mail;
+        const mdp = req.body.password;
+        const sqlQuery = `SELECT * FROM utilisateur WHERE mail="${mail}" `;
 
-//récupère toute les question
+        db.query(sqlQuery, (error, result)=>{
+            if(result.length === 0){ 
+                const passwordHashed = bcrypt.hash(mdp, rounds);                    //Promesses asynchrones
+                const mailHashed = bcrypt.hash(mail, rounds);                       //Promesses asynchrones
+
+                Promise.all([mailHashed, passwordHashed]).then(hasheds => {          //attend la répons des promesses
+                    const annee = new Date();
+                    const idLangue = 1;
+                    const deleted = 0;
+                    let insertUser = "INSERT INTO `utilisateur`(`mail`, `mdp`, `annee`, `id_langue`, `deleted`) VALUES (?,?,?,?,?)";
+                    
+                    db.query(insertUser, [hasheds[0], hasheds[1], annee, idLangue, deleted], (error, resultInsert)=>{
+                        if(resultInsert != null){
+                            res.json(resultInsert);
+                        }else{
+                            res.json(error);
+                        }
+                    });
+                })
+
+            }else if(result.length >0 && hashPassword(mdp, result[0].mdp) ){
+                res.send("bad mdp");
+            }else{
+                let tab;
+                tab.push(mail, mdp);
+            }
+            // return error + " / " + result;
+        })
+    }); 
+
+
+
+
+
+
+    const rounds = 10;
+
+    async function hashPassword (pass, bddMdp){
+        //const hash = await bcrypt.hash(pass, rounds);
+        const rst = _isEqual(pass,bddMdp); 
+        return rst;
+    }
+
+
+
+
+// **************************** METHODE GET  **************************** //
+//RECUPERE TOUTES LES QUESTIONS
     app.get('/api/getAllQuestion', (req, res) =>{
-        const sqlQUery = "SELECT * FROM question";
-        db.query(sqlQUery, (error, result)=>{
-            res.send(result);
+        const sqlQuery = "SELECT * FROM question";
+
+        db.query(sqlQuery, (error, result)=>{
+            if(result != null){
+                res.send(result);
+            }else{
+                res.send(error);
+            }
         })
     });
 
-
-//récupère toute les reponse selon les question
+//RECUPERER TOUTES LES REPONSES (selon les questions) 
     app.get('/api/getAllReponse', (req, res) =>{
-        const sqlQUery = "SELECT * FROM question";
-        db.query(sqlQUery, (error, result)=>{
-            res.send(result);
+        const sqlQuery = "SELECT * FROM question";
+
+        db.query(sqlQuery, (error, result)=>{
+            if(result != null){
+                res.send(result);
+            }else{
+                res.send(error);
+            }
         })
     });
 
 
-//ajout de question
+
+// **************************** METHODE POST **************************** //
+//AJOUT DE QUESTION
     app.post('/api/AddQuestion', (req, res) =>{
         const enonce = req.body.enonce;
         const ordre = req.body.ordre;
         const editable = req.body.is_editable;
-
         const insertQuestion = "INSERT INTO `question`(`enonce`, `ordre`, `is_editable`) VALUES (?,?,?)";
+
         db.query(insertQuestion, [enonce, ordre, editable], (error, result)=>{
             if(result != null){
                 res.json(result);
@@ -60,17 +124,27 @@ app.use(express.urlencoded ({extended:true}));
 
     });
 
+//INSCRIPTION
+    // app.post('/api/inscription', (req, res) =>{
+    //     const mail = req.body.mail;
+    //     const mdp = req.body.password;
+    //     const annee = new Date();
+    //     const idLangue = 1;
+    //     const deleted = 0;
+    //     const insertUser = "INSERT INTO `utilisateur`(`mail`, `mdp`, `annee`, `id_langue`, `deleted`) VALUES (?,?,?,?,?)";
+
+    //     db.query(insertUser, [mail, mdp, annee, idLangue, deleted], (error, result)=>{
+    //         if(result != null){
+    //             res.json(result);
+    //         }else{
+    //             res.json(error);
+    //         }
+    //     });
+    // });
 
 
 
-
-
-
-
-
-
-
-
-app.listen(port, () =>{
-    console.log(`server is runing on ${port}`);
-})
+// **************************** MESSAGE POUR PORT D'ECOUTE **************************** //
+    app.listen(port, () =>{
+        console.log(`server is runing on ${port}`);
+    })

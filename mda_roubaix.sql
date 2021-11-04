@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : ven. 29 oct. 2021 à 07:22
+-- Généré le : jeu. 04 nov. 2021 à 14:58
 -- Version du serveur :  10.4.13-MariaDB
 -- Version de PHP : 7.4.9
 
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `deleted` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `id_langue` (`id_langue`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -154,7 +154,13 @@ INSERT INTO `utilisateur` (`id`, `mail`, `mdp`, `annee`, `id_langue`, `deleted`)
 (42, '935cc435a5faef2d6f3a64924206415a406320566ac3f278f909604d', '$2b$08$tqLSXIyjvC..9AtkbIkAQeHV6LZSvFQygdk86u9PQFz3lx04K9bGO', '0000-00-00', 1, 0),
 (43, '935cc435a5faef2d6f3a64924206415a406320566ac3f278c47c0f43a2de86b8', '$2b$08$UUXAXxO1TFHqZ19IGZiEEOi4ehF3DcgkFvvPNiOLD0t47/hOEkyLO', '0000-00-00', 1, 0),
 (44, '935cc435a5faef2d6f3a64924206415a406320566ac3f278fa551004', '$2b$08$7FC622t.nj0GyLB9DAnVBe3ceSCfbJ32dT28D9oQWJKDKUICx/aFm', '0000-00-00', 1, 0),
-(45, '935cc435a5faef2d6f3a64924206415a406320566ac3f278c1630b51', '$2b$08$J/lGYCq69T5a2CI8la61weLItnwAOwcr6ALYv/8YzhozGM3aIH3Om', '0000-00-00', 1, 0);
+(45, '935cc435a5faef2d6f3a64924206415a406320566ac3f278c1630b51', '$2b$08$J/lGYCq69T5a2CI8la61weLItnwAOwcr6ALYv/8YzhozGM3aIH3Om', '0000-00-00', 1, 0),
+(46, 'andhromede@hotmail.com', '12345', '1980-11-01', 1, 0),
+(47, 'marhalt@hotmail.com', '12345', '1968-09-03', 1, 0),
+(48, 'andhromede@hotmail.fr', '12345', '2021-11-04', 1, 0),
+(53, '', '', '2021-11-04', 1, 0),
+(54, '', '', '2021-11-04', 1, 0),
+(55, '$2b$10$EfORlSpwfP7XZ9uS4MNOJeENpI/eMBDw74IoV2p0N.AdEXME9yrr6', '$2b$10$i0Iut/fx.e2LvgOkSnuBxuEKa8nCrvxcWlTQUftiFYJnzuq1ZW43O', '2021-11-04', 1, 0);
 
 --
 -- Contraintes pour les tables déchargées
