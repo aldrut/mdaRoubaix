@@ -6,28 +6,58 @@ import { AiFillLock, AiOutlineRetweet} from 'react-icons/ai'
 
 import { useState, useEffect } from 'react';
 import  Axios from 'axios';
+// import  bcrypt from 'bcrypt';
+
 
 
 export function Login() {
 
     const [mail, setMail] = useState([]);
     const [password, setPassword] = useState([]);
+    // const rounds = 10;
 
     //CONNEXION
     const onClick = () => {
-        Axios.get(`http://10.115.58.226:3001/api/connexion/${mail}`).then((response) => {
-            setMail(response.data);
-            let result = response.data[0];
-            console.log(result);
-            
-            // if(response.data.length === 0 ){
-            //     alert("cet email n'existe pas");
-            // }else if(result.mail === mail && result.mdp !== password){
-            //     alert("mdp incorect");
-            // }else{
-            //     alert("connexion ok");
-            // }
-        });
+        // let passwordHashed = '';
+        // let mailHashed = '';
+        // let flag1 = false;
+        // let flag2 = false;
+        // let msgPass = "";
+        // let msgMail ="";
+
+        // bcrypt.hash(password, rounds, (err, hash) => {
+        //     if(err){
+        //         flag1 = false;
+        //         msgPass = err;
+        //         return;
+        //     }else{
+        //         passwordHashed = hash;
+        //         flag1= true;
+        //     }
+        // });
+
+        // bcrypt.hash(mail, rounds, (err, hash) => {
+        //     if(err){
+        //         mailHashed = '';
+        //         flag2=false;
+        //         msgMail = err;
+        //         return;
+        //     }else{
+        //         mailHashed = hash;
+        //         flag2=true;
+        //     }
+        // });
+
+
+        // if(flag1 === true && flag2 === true) {
+            Axios.post(`http://10.115.58.226:3001/api/connexion`, {password:password, mail:mail}).then((response) => {
+                let result = response.data; 
+                console.log(result); 
+            });
+        // }else{
+        //     console.log(msgMail + " / " + msgPass);
+        // }
+        
     }
     
     //CONNEXION
