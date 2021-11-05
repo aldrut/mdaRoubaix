@@ -19,7 +19,8 @@ app.use(express.urlencoded({ extended: true }));
         user: "root",
         password: "",
         database: "mda_roubaix",
-        port: 3307,
+        // port: 3307,                  //config AFPA
+        port: 3306,                     //config nath
     });
 
     app.get('/', (req, res) => {
