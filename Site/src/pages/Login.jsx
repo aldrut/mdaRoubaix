@@ -52,13 +52,15 @@ export function Login() {
         // if(flag1 === true && flag2 === true) {
             Axios.post(`http://10.115.58.226:3001/api/connexion`, {password:password, mail:mail}).then((response) => {
                 let result = response.data; 
-                console.log(result); 
+                console.log(result);
+                // console.log("resultat / " + result); 
             });
         // }else{
         //     console.log(msgMail + " / " + msgPass);
         // }
         
     }
+    
     
     //CONNEXION
     // const onClick = () => {
