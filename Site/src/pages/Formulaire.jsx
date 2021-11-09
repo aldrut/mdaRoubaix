@@ -27,8 +27,8 @@ export function Formulaire(props) {
     let count = questionList.length;
 
     useEffect(() => {
-        // Axios.get('http://localhost:3001/api/GetAllQuestion').then((response) => {
-        Axios.get('http://10.115.58.226:3001/api/GetAllQuestion').then((response) => {
+        Axios.get('http://localhost:3001/api/GetAllQuestion').then((response) => {
+        // Axios.get('http://10.115.58.226:3001/api/GetAllQuestion').then((response) => {
             setQuestionList(response.data);
         });
     },[]

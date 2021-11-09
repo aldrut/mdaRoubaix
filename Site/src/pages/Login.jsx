@@ -50,7 +50,8 @@ export function Login() {
 
 
         // if(flag1 === true && flag2 === true) {
-            Axios.post(`http://10.115.58.226:3001/api/connexion`, {password:password, mail:mail}).then((response) => {
+            //Axios.post(`http://10.115.58.226:3001/api/connexion`, {password:password, mail:mail}).then((response) => {
+            Axios.post(`http://127.0.0.1:3001/api/connexion`, {password:password, mail:mail}).then((response) => {
                 let result = response.data; 
                 console.log(result);
                 // console.log("resultat / " + result); 

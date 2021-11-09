@@ -40,8 +40,15 @@ export function CustomText(props){
 
     //VERIFIER SI NBR DANS l'INPUT NUMBER
     const onKeyUp = (evt) => {
-        let result = Number.parseInt(evt.target.value);
-        props.passedFunction(result ? false : true);  
+        
+        let result = false;
+         
+
+       result = (isNaN(parseInt(evt.target.value)) ? false : true );
+        
+
+        props.passedFunction(result ? false : true );  
+        
         if(!result){
             setMessage("Veuillez saisir un nombre");
         }else{
